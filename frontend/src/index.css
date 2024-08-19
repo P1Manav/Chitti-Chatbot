@@ -4,7 +4,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: #3E3638;
+  background: #262626;
   color: #E5E2E2;
   font-family: "Roboto Slab", serif;
 }
@@ -31,7 +31,7 @@ body {
 }
 
 .rotate {
-  animation: rotation 8s infinite linear;
+  box-shadow: none;
 }
 
 @keyframes rotation {

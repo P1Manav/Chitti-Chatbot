@@ -102,7 +102,7 @@ const Chat = () => {
             display: "flex",
             width: "100%",
             height: "60vh",
-            bgcolor: "rgb(17,29,39)",
+            bgcolor: "#8c8c8c",
             borderRadius: 5,
             flexDirection: "column",
             mx: 3,
@@ -112,8 +112,8 @@ const Chat = () => {
             sx={{
               mx: "auto",
               my: 2,
-              bgcolor: "white",
-              color: "black",
+              bgcolor: "#262626",
+              color: "#E5E2E2",
               fontWeight: 700,
             }}
           >
@@ -121,18 +121,18 @@ const Chat = () => {
             {auth?.user?.name?.split(" ")[1]?.[0] || ""}
           </Avatar>
           <Typography sx={{ mx: "auto", fontFamily: "work sans" }}>
-            You are talking to a ChatBOT
+            This is Chitti - Here 
           </Typography>
           <Typography sx={{ mx: "auto", fontFamily: "work sans", my: 4, p: 3 }}>
-            You can ask some questions related to Knowledge, Business, Advices,
-            Education, etc. But avoid sharing personal information
+            You can ask any questions related to Knowledge, Business, Advices,
+            Education, etc. 
           </Typography>
           <Button
             onClick={handleDeleteChats}
             sx={{
               width: "200px",
               my: "auto",
-              color: "white",
+              color: "#E5E2E2",
               fontWeight: "700",
               borderRadius: 3,
               mx: "auto",
@@ -163,7 +163,7 @@ const Chat = () => {
             fontWeight: "600",
           }}
         >
-          Model - GPT 3.5 Turbo
+          Model - GPT 4
         </Typography>
         <Box
           sx={{
@@ -193,7 +193,7 @@ const Chat = () => {
           style={{
             width: "100%",
             borderRadius: 8,
-            backgroundColor: "rgb(17,27,39)",
+            backgroundColor: "#8c8c8c",
             display: "flex",
             margin: "auto",
           }}
@@ -211,7 +211,7 @@ const Chat = () => {
               fontSize: "20px",
             }}
           />
-          <IconButton onClick={handleSubmit} sx={{ color: "white", mx: 1 }}>
+          <IconButton onClick={handleSubmit} sx={{ color: "#000000", mx: 1 }}>
             <IoMdSend />
           </IconButton>
         </div>

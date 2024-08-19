@@ -1,67 +1,44 @@
 import axios from "axios";
-export const loginUser = async (email: string, password: string) => {
-  const res = await axios.post("/user/login", { email, password });
-  if (res.status !== 200) {
-    throw new Error("Unable to login");
+
+// Helper function to handle API responses
+const handleResponse = async (promise: Promise<any>, successStatus: number) => {
+  try {
+    const res = await promise;
+    if (res.status !== successStatus) {
+      throw new Error(`Unexpected response status: ${res.status}`);
+    }
+    return res.data;
+  } catch (error) {
+    // Log detailed error information
+    console.error("API call failed:", error);
+    throw error;
   }
-  const data = await res.data;
-  return data;
 };
 
-export const signupUser = async (
-  name: string,
-  email: string,
-  password: string
-) => {
-  const res = await axios.post("/user/signup", { name, email, password });
-  if (res.status !== 201) {
-    throw new Error("Unable to Signup");
-  }
-  const data = await res.data;
-  return data;
+export const loginUser = async (email: string, password: string) => {
+  return handleResponse(axios.post("/user/login", { email, password }), 200);
+};
+
+export const signupUser = async (name: string, email: string, password: string) => {
+  return handleResponse(axios.post("/user/signup", { name, email, password }), 201);
 };
 
 export const checkAuthStatus = async () => {
-  const res = await axios.get("/user/auth-status");
-  if (res.status !== 200) {
-    throw new Error("Unable to authenticate");
-  }
-  const data = await res.data;
-  return data;
+  return handleResponse(axios.get("/user/auth-status"), 200);
 };
 
 export const sendChatRequest = async (message: string) => {
-  const res = await axios.post("/chat/new", { message });
-  if (res.status !== 200) {
-    throw new Error("Unable to send chat");
-  }
-  const data = await res.data;
-  return data;
+  return handleResponse(axios.post("/chat/new", { message }), 200);
 };
 
 export const getUserChats = async () => {
-  const res = await axios.get("/chat/all-chats");
-  if (res.status !== 200) {
-    throw new Error("Unable to send chat");
-  }
-  const data = await res.data;
-  return data;
+  return handleResponse(axios.get("/chat/all-chats"), 200);
 };
 
 export const deleteUserChats = async () => {
-  const res = await axios.delete("/chat/delete");
-  if (res.status !== 200) {
-    throw new Error("Unable to delete chats");
-  }
-  const data = await res.data;
-  return data;
+  return handleResponse(axios.delete("/chat/delete"), 200);
 };
 
 export const logoutUser = async () => {
-  const res = await axios.get("/user/logout");
-  if (res.status !== 200) {
-    throw new Error("Unable to delete chats");
-  }
-  const data = await res.data;
-  return data;
+  return handleResponse(axios.get("/user/logout"), 200);
 };
