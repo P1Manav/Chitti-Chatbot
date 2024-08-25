@@ -29,7 +29,6 @@ export const generateChatCompletion = async (
       messages: chats,
     });
 
-    // Check for valid response
     if (!chatResponse.data.choices || chatResponse.data.choices.length === 0) {
       throw new Error("No choices returned from OpenAI API");
     }
@@ -79,8 +78,7 @@ export const deleteChats = async (
       return res.status(401).send("Invalid token or user not found");
     }
 
-    // Correctly clear chats
-    user.chats.splice(0, user.chats.length); // This will empty the array while preserving the DocumentArray type
+    user.chats.splice(0, user.chats.length); 
     await user.save();
 
     return res.status(200).json({ message: "OK" });
